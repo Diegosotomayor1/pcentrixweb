@@ -1,27 +1,24 @@
 <template>
-  <div id="app">
-      <p-header/>
-      <router-view/>
-      <p-footer/>
-  </div>
+  <main>
+      <section class="section">
+        <services/>
+      </section>
+  </main>
 </template>
 
 <script>
-import PHeader from './templates/header.vue';
-import PFooter from './templates/footer.vue';
-
+import Services from './Services.vue';
 
 export default {
   name: 'app',
   components:{
-    PHeader,
-    PFooter
-  },
+    Services
+  }
 }
 </script>
 
 <style lang="scss">
-@import './assets/sass/main.scss';
+@import '../assets/sass/main.scss';
 
 section{
   display: flex;
