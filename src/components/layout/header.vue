@@ -1,9 +1,9 @@
 <template>
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="">
+    <router-link class="navbar-item" to="/">
       <h1 class="title">PCENTRIX</h1>
-    </a>
+    </router-link>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -17,8 +17,8 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item">Inicio</a>
-      <a href="" class="navbar-item">Nosotros</a>
+      <router-link to="/reparacion/componente-laptop" class="navbar-item">Inicio</router-link>
+      <router-link to="/view" class="navbar-item">Example View</router-link>
       <a href="" class="navbar-item">Nuestro proceso</a>
       <a href="" class="navbar-item">Preguntas frecuentes</a>
       <div class="navbar-item has-dropdown is-hoverable">
@@ -27,7 +27,7 @@
         <div class="navbar-dropdown">
             <a href="" class="navbar-item is-flex"><font-awesome-icon class="icon" style="color:white;stroke: black;
     stroke-width: 8%;" icon="cog"/><p class="item-text">Computadora</p></a>
-            <a href="" class="navbar-item is-flex"><font-awesome-icon  class="icon" icon="desktop"/><p class="item-text">Reparación</p></a>
+            <router-link to="/reparacion" class="navbar-item is-flex"><font-awesome-icon  class="icon" icon="desktop"/><p class="item-text">Reparación</p></router-link>
         </div>
 
       </div>
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <style lang="scss" scoped>
-@import '../assets/sass/main.scss';
+@import '../../assets/sass/main.scss';
 img{
     width: 90px;
     height: 80px;
@@ -77,10 +77,13 @@ img{
     background: transparent;
     padding: 15px 5%;
 }
+router-link{
+  @extend a;
+}
 a{
   color: white;
 }
-a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active{
+.navbar-item:focus, .navbar-item:focus-within, .navbar-item:hover, .navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active{
   background: transparent;
   color:$primary
 }

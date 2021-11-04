@@ -13,8 +13,8 @@
             <div class="card">
               <div class="card-content" @click="componentChange(['service'], machine.pc)">
                 <div class="content">
-                  <h2 class="title">{{machine.pc}}</h2>
-                  <img class="icon-select" src="../assets/img/computer.svg" alt="" width="150px">
+                  <h2 class="title upper">{{machine.pc}}</h2>
+                  <img class="icon-select" src="../../assets/img/computer.svg" alt="" width="150px">
                 </div>
               </div>
             </div>
@@ -24,8 +24,8 @@
             <div class="card" @click="componentChange(['service'], machine.laptop)">
               <div class="card-content">
                 <div class="content">
-                  <h2 class="title">{{machine.laptop}}</h2>
-                  <img class="icon-select" src="../assets/img/laptop.svg" alt="" width="150px">
+                  <h2 class="title upper">{{machine.laptop}}</h2>
+                  <img class="icon-select" src="../../assets/img/laptop.svg" alt="" width="150px">
                 </div>
               </div>
             </div>
@@ -35,6 +35,14 @@
 <script>
 
 export default({
-    props:{machine:Object, componentChange: Function}
+    props:{componentChange: Function},
+    data(){
+      return{
+      machine:{
+        laptop: "laptop",
+        pc: "pc"
+      },
+      }
+    }
 })
 </script>

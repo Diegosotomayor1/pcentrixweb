@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import PHeader from './templates/header.vue';
-import PFooter from './templates/footer.vue';
+import PHeader from './components/layout/header.vue';
+import PFooter from './components/layout/footer.vue';
 
 
 export default {
@@ -19,15 +19,8 @@ export default {
   },
 }
 </script>
-
 <style lang="scss">
 @import './assets/sass/main.scss';
-
-section{
-  display: flex;
-  height: 90vh;
-  align-items: center;
-}
 #app {
   font-family: 'Inria Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,5 +32,4 @@ section{
   flex-flow: column;
   align-items: center;
 }
-
 </style>

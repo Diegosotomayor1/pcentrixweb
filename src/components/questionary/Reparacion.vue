@@ -51,10 +51,10 @@
             </div>
         </div>
         </div>
-        <div class="columns mt-2">
-        <div class="column is-mobile is-centered">
-            <div class="container">
-                <div class="content has-text-centered is-flex">
+        <div class="">
+        <div class="is-mobile is-centered">
+            <div class="">
+                <div class="content has-text-centered is-flex center-flex">
                     <h5 class="subtitle is-5 ">¿ No encuentras tu problema ?<a href="" class="c-secundary"> haz click aquí</a></h5>
                 </div>
             </div>
@@ -71,9 +71,14 @@ export default ({
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/main.scss';
+@import '../../assets/sass/main.scss';
+    .center-flex{
+        justify-content: center;
+    }
     .card-content{
         height: auto !important;
+        width: 100%;
+        max-width: 100%;
     }
     .subtitle{
         font-size: 17px;
@@ -95,24 +100,39 @@ export default ({
         height: 150px;
         padding: 15px;
     }
+    .columns{
+        align-items: flex-start;
+    }
     @media (min-width:752px) and (max-width:1198px){
         .flex-in-card{
             display: block !important;
+        }
+        .columns{
+            align-items: center;
         }
     }
 
     @media (max-width:1198px){
         .title{
             margin-top:15px !important;
+            font-size:25px
+        }
+        .subtitle{
+            font-size: 16px;
         }
     }
     @media(max-width:768px){
         .repair{
-            margin-top: 220%;
             align-items: center;
         }
         .columns{
             margin: 0 !important;
+            align-items: center;
+        }
+    }
+    @media (max-width:420px){
+        h3.title{
+            font-size: 21px;
         }
     }
 

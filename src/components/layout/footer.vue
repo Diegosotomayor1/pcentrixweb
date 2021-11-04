@@ -26,7 +26,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/sass/main.scss';
+@import '../../assets/sass/main.scss';
 .footer-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;

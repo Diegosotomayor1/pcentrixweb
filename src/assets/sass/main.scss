@@ -1,5 +1,8 @@
 html{
-    background: linear-gradient(to bottom, rgb(58, 58, 58), black);;
+    background: linear-gradient(to bottom, rgb(57, 55, 55), rgb(10,10,10), rgb(4,4,4));
+    background-repeat: repeat;
+    background-size: cover;
+    min-height: 100vh;
 }
 //Variables
 $title-color: white;
@@ -7,6 +10,7 @@ $primary: #29B88D;
 $primary-2:#68DEBB;
 $secundary: white;
 $secundary-2: gray;
+$color-combinate:#03EEFF;
 footer{
   display: block;
   position: relative;
@@ -31,15 +35,42 @@ footer{
 .fade-enter-active, .fade-leave-active {
   transition: position 0.5s;
   transition: display 0.5s;
-  transition: opacity 1s;
+  transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   position: absolute;
   opacity: 0; 
   transition: position 0.5s;
-  transition: display 0.5s;
-  transition: opacity 1s;
+  transition: opacity .5s;
 }
+/**/
+.slide-enter-active, .slide-leave-active {
+  animation: slide-out .33s
+}
+.slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  animation: slide-in .33s
+}
+@keyframes slide-out {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+@keyframes slide-in{
+  0% {
+    max-height: 300px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0px;
+    opacity: 0;
+  }
+}
+
 
 
 /*
@@ -57,16 +88,28 @@ div#app::before {
     background: #29B88D;
 }*/
 section{
-    height: 80vh;
-    overflow-y: overlay;
+    min-height: 80vh;
     -webkit-overflow-scrolling: touch;
 }
+/*Clase para hacer transformacion de palabras*/
+.upper{
+  text-transform: uppercase;
+}
+.capital{
+  text-transform: capitalize;
+}
+/**/
 h1, h2 {
     color: $primary;
     font-weight: bold;
     
   }
-  
+  .is-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items:center;
+    animation: abs($number: 40);
+  }
   ul {
     list-style-type: none;
     padding: 0;
@@ -81,6 +124,17 @@ h1, h2 {
     color: $primary;
   }
   .columns{
+      .is-flex{
+        width: 100%;
+        .column{
+          justify-content: space-between;
+        }
+        @media (max-width:768px){
+          .column{
+            justify-content: center;
+          }
+        }
+      }
       width: 100%;
   }
   .c-primary{
@@ -113,3 +167,20 @@ h1, h2 {
       }
 
   }
+  input{
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+  }
+
+  .container {
+    flex-grow: 1;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    width: auto;
+    min-height: 70vh;
+    flex-direction: column;
+    justify-content: center;
+}

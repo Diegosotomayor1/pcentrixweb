@@ -48,7 +48,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/sass/main.scss';
+@import '../../assets/sass/main.scss';
 .dark-card{
     margin: 50px 15%;
     display: ruby-base;

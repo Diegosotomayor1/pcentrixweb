@@ -5,7 +5,7 @@
               <div class="card-content">
                 <div class="content">
                   <h2 class="title">{{ service.reparacion[0] }}</h2>
-                  <img class="icon-select" src="../assets/img/simbolo-de-destornillador-y-llave.svg" alt="" width="150px">
+                  <img class="icon-select" src="../../assets/img/simbolo-de-destornillador-y-llave.svg" alt="" width="150px">
                 </div>
               </div>
             </div>
@@ -15,7 +15,7 @@
               <div class="card-content">
                 <div class="content">
                   <h2 class="title">{{ service.mantenimiento[0] }}</h2>
-                  <img class="icon-select" src="../assets/img/escoba.svg" alt="" width="150px">
+                  <img class="icon-select" src="../../assets/img/escoba.svg" alt="" width="150px">
                 </div>
               </div>
             </div>
@@ -26,7 +26,7 @@
               <div class="card-content">
                 <div class="content">
                   <h2 class="title">{{ service.repotenciamiento[0] }}</h2>
-                  <img class="icon-select" src="../assets/img/boton-de-flecha-hacia-arriba.svg" alt="" width="150px">
+                  <img class="icon-select" src="../../assets/img/boton-de-flecha-hacia-arriba.svg" alt="" width="150px">
                 </div>
               </div>
             </div>
@@ -40,6 +40,17 @@ export default({
         service: Object,
         rute: Function,
         componentChange: Function
-        }
+    }, 
 })
 </script>
+<style lang="scss" scoped>
+@import 'src/assets/sass/main.scss';
+h2{
+  color: #000;
+}
+@media (max-width:1024px){
+  h2.title{
+    font-size: 1.5em;
+  }
+}
+</style>

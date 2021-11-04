@@ -1,27 +1,32 @@
 <template>
 <div class="container">
   <back :service="service" :count="count" :fase="fase" :Return="Return"></back>
-  <transition name="fade">
-  <div class="columns" v-if="fase == ''">
-        <first-question :machine="machine" :componentChange="componentChange"></first-question>  
+ <transition appear enter-active-class="animate__animated animate__fadeIn animate__faster" leave- 
+    active-class="animate__animated animate__zoomOut animate__faster" mode="out-in"> 
+   <div class="columns" v-if="fase == ''">
+        <first-question :componentChange="componentChange"></first-question>  
   </div>
   </transition>
-  <transition name="fade">
+  <transition appear enter-active-class="animate__animated animate__fadeIn animate__faster" leave- 
+    active-class="animate__animated animate__zoomOut animate__faster" mode="out-in"> 
   <div class="columns" v-if="fase == 'service'">
         <select-service :service="service" :componentChange="componentChange" :rute="rute"></select-service>  
   </div>
   </transition>
-  <transition name="fade">
+  <transition appear enter-active-class="animate__animated animate__fadeIn animate__faster" leave- 
+    active-class="animate__animated animate__zoomOut animate__faster" mode="out-in"> 
   <div class="columns" v-if="fase ==  service.reparacion" >
         <reparacion :problem="problem" :solution="solution" :DiagnosticPopup="DiagnosticPopup"></reparacion>
   </div>
   </transition>
-  <transition name="fade">
+  <transition appear enter-active-class="animate__animated animate__fadeIn animate__faster" leave- 
+    active-class="animate__animated animate__zoomOut animate__faster" mode="out-in"> 
   <div class="columns"  v-if="fase == service.mantenimiento">
     <mantenimiento></mantenimiento>  
   </div>
   </transition>
-  <transition name="fade">
+  <transition appear enter-active-class="animate__animated animate__fadeIn animate__faster" leave- 
+    active-class="animate__animated animate__zoomOut animate__faster" mode="out-in"> 
   <div class="columns" v-if="fase == service.repotenciamiento">
   <repotenciamiento/>
   </div>
@@ -33,22 +38,18 @@
 </template>
 
 <script>
-import FirstQuestion from './FirstQuestion';
-import SelectService from './SelectService';
-import Reparacion from './Reparacion';
-import Mantenimiento from './Mantenimiento';
-import Repotenciamiento from './Repotenciamiento.vue';
-import PopupUrgency from '../templates/PopupUrgency.vue';
-import back from './back.vue';
+import FirstQuestion from './questionary/FirstQuestion';
+import SelectService from './questionary/SelectService';
+import Reparacion from './questionary/Reparacion';
+import Mantenimiento from './questionary/Mantenimiento';
+import Repotenciamiento from './questionary/Repotenciamiento.vue';
+import PopupUrgency from './templates/PopupUrgency.vue';
+import back from './templates/back.vue';
 
 export default({
   components:{FirstQuestion, SelectService, Reparacion, Mantenimiento, Repotenciamiento, PopupUrgency, back},
   data(){
     return{
-      machine:{
-        laptop: "LAPTOP",
-        pc: "PC"
-      },
       // Descripcion de la solución en popup
       problem:{
         title: "",
@@ -101,10 +102,11 @@ export default({
   methods:{
     componentChange(seccion ,eleccion){
       this.fase = seccion;
-      this.count.push(eleccion);  
+      this.count.push(eleccion); 
       return this.fase
     },
     rute(eleccion){
+      this.backfase = this.fase;
       return this.fase = eleccion
     },
     DiagnosticPopup(problema){
@@ -113,7 +115,7 @@ export default({
         return this.show_popup = true
       }
       else if(this.problem.title == "Componente dañado") {
-        window.location.href = "/"
+        window.location.href = "reparacion/componente-" + this.count[0];
       }
     },
     PopupClose(){
@@ -121,16 +123,26 @@ export default({
     },
     Return(){
       this.count.pop();
-      this.fase = count[count.length - 1];
-      return count
-    }
-  }
-  
+      if(this.fase[0] == ["service"] ){
+        this.fase = [""]
+      }
+      if(this.fase[0] == "Reparación" || this.fase == ["Mantenimiento", "img"] || this.fase[0] == "Repotenciamiento" || this.fase[0] == "Mantenimiento"){
+           this.fase = ["service"]
+      }
+      return this.fase
+    },
+  },
+ 
 })
 </script>
 
 <style lang="scss">
 @import '../assets/sass/main.scss';
+@import '../../node_modules/animate';
+section{
+  display: flex;
+  align-items: center;
+}
 #second{
   display: none;
 }
@@ -158,8 +170,9 @@ export default({
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 350px;
-    padding: 20px 50px;
+    width: 25vw;
+    height: 300px;
+    max-width: 300px;
     
 }
 @media (max-width:768px){
