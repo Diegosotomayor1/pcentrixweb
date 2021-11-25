@@ -1,15 +1,15 @@
 <template>
     <div class="columns absolute-transition">
     <div class="flexify">
-                <div class="column is-one-third">
+            <div class="column is-one-third" style="align-items:start">
             <div class="content">
-                <font-awesome-icon icon="cog" class="icon-flex" />
+                <img class="icon-flex" src="src\assets\img\iconos\Icono cambio de componente-01.svg" alt="">
             </div>
         </div>
         <div class="column">
             <div class="content">
                 <div class="intro_repair">
-                    <h2 class="title">Diagnostiquemos tu pc</h2>
+                    <h2 class="title">Diagnostiquemos tu laptop</h2>
                     <p class="subtitle is-6">Sigue cada punto</p>
                 </div>
                 <div id="tabs-with-content">
@@ -21,8 +21,8 @@
                         <div class="tab-content modelo" v-show="showpass == 'modelo'">
                         <div class="content is-flex">
                             <div>
-                                <h3 class="title is-3">Encuentra tu modelo</h3>
-                                <font-awesome-icon class="icon" icon="desktop"/>
+                                <h3 class="title is-3">Encuentra tu modelo <br>y escribelo</h3>
+                                <img class="icon" src="src\assets\img\iconos\laptop-model.svg" alt="">
                             </div>
                             <div>
                                 <h3 class="title is-3">Ingresa la información de tu laptop</h3>
@@ -30,8 +30,8 @@
                                 <input type="text" v-model="laptop_model" name="model-laptop" id="model-laptop" placeholder="Ej: Lenovo Ideapad 330S 15ARR">
                                 <h3 class="subtitle"> ¿Lo han reparado antes?</h3>
                                 <div class="is-flex buttons">
-                                <button class="button" @click="reparado=true">Si</button>
-                                <button class="button" @click="reparado=false">No</button>         
+                                <button class="button" @click="reparado=true; Model('fail')">Si</button>
+                                <button class="button" @click="reparado=false; Model('fail')">No</button>         
                                 </div>
                             </div>                            
                         </div>
@@ -43,19 +43,11 @@
                         <div class="content">
                             <p class="subtitle is-6">Los precios varían segun el modelo de tu equipo</p>
                             <div class="grid-content fails">
-                                <div class="fail-item item-0">
-                                   <a class="overlay" @click="Guardar('pantalla')">
+                                <div class="fail-item item-0" v-for="component in components" v-bind:style="{ 'background-image' : 'url(' + component.image + ')'}">
+                                   <a class="overlay" @click="Guardar(component.title)">
                                        <div class="fail-item-title title-contain">
-                                        <h3 class="fail-item-title">Pantalla</h3>
-                                        <p>Costo entre: <b class="price">450 a 2000</b></p>
-                                        </div>
-                                   </a>
-                                </div>
-                                <div class="fail-item item-0">
-                                   <a class="overlay" @click="Guardar('bateria')">
-                                       <div class="fail-item-title title-contain">
-                                        <h3 class="fail-item-title">Pantalla</h3>
-                                        <p>Costo entre: <b class="price">450 a 2000</b></p>
+                                        <h3 class="fail-item-title">{{component.title}}</h3>
+                                        <p class="dark-parraf">Costo entre: <b class="price">{{component.price}}</b></p>
                                         </div>
                                    </a>
                                 </div>
@@ -68,7 +60,7 @@
                 <div>
                 </div>
                 </div>
-                <router-link to="./contacto"><button class="button submit"> Continuar </button></router-link>
+                <button class="button submit" @click="Contact()"> Continuar </button>
             </div>
         </div>
     </div>
@@ -77,6 +69,7 @@
 <script>
 
 export default ({
+    props:{ Contactform: Function },
     data(){
         return{
            modelo: "modelo",
@@ -84,7 +77,70 @@ export default ({
            showpass: "modelo",
            componentes: [],
            laptop_model: "",
-           reparado: undefined      
+           reparado: undefined,
+           components:[
+               {
+                   title: "Batería",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Batería-01.png',
+               }, 
+                              {
+                   title: "Bisagras",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Bisagras-01.png',
+               }, 
+               {
+                   title: "Cámara",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Cámara-01.png',
+               }, 
+               {
+                   title: "Carcasa",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Carcasa-01.png',
+               },
+               {
+                   title: "Conectores",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Conectores.png',
+               },
+               {
+                   title: "Micrófono",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Micrófono-01.png',
+               },
+               {
+                   title: "Mousepad",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Mousepad-01.png',
+               },
+               {
+                   title: "Pantalla",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Pantalla-01.png',
+               },
+               {
+                   title: "Parlantes",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Parlantes-01.png',
+               },
+               {
+                   title: "Puerto de carga",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Puerto-de-carga-01.png',
+               },
+               {
+                   title: "Teclado",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Teclado-01.png',
+               },
+               {
+                   title: "Wifi",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionlaptop/Wifi-01.png',
+               },  
+
+           ]     
         }
     },
     methods:{
@@ -106,6 +162,10 @@ export default ({
             if(searchComponent == -1){ this.componentes.push(str) }
             else{ this.componentes.splice(searchComponent, 1) }
         },
+        Contact(){
+        this.$store.state.count.push('Contact');
+        this.$store.state.fase = 'Contact'; 
+        }
 
     },
     mounted: function(){
@@ -126,12 +186,17 @@ export default ({
 
 <style lang="scss" scoped>
 @import '../../assets/sass/main.scss';
+.dark-parraf{
+  color:$secundary
+}
 .icon-flex{
     width: 100% ;
-    height: 200px;
+    height: 250px;
     margin: 20px 0;
     padding: 10px;
     color: $secundary ;
+    filter: invert(1);     
+
     @media(max-width:768px){
         display: none;
     }
@@ -243,7 +308,7 @@ export default ({
     }
     .icon{
         width: 100%;
-        height: 150px;        
+        height: 150px;   
     }
     
 }
@@ -286,7 +351,7 @@ export default ({
 .item-0{
     background-image: url(https://previews.123rf.com/images/weerapat/weerapat1505/weerapat150500119/57450932-personal-computer-burnt-due-to-electricity-short-circuit-threat-to-computer-hardware-concept.jpg);
     position: relative;
-    height: 200px;
+    height: 172px;
     margin:10px;
     background-size: cover;
     border-radius: 20px;

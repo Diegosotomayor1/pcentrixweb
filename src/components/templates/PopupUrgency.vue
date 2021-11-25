@@ -4,13 +4,13 @@
   <div class="modal-content">
       <div class="content">
         <div class="popup-info">
-          <font-awesome-icon class="icon_popup" icon="truck"/>
-          <h3 class="title is-3">¡Tu {{count[0]}} necesita un experto!</h3>
+          <img class="icon_popup" src="src\assets\img\popup\Técnico-01.svg" alt="">
+          <h3 class="title is-3">¡Tu {{$store.state.count[0]}} necesita un experto!</h3>
           <p class="subtitle is-5">{{ problem.description }}</p>
           <span class="subtitle is-4">Costo: S/. {{problem.price}}</span>
         </div>
       <div class="popup-buttons is-flex">
-          <a href=""><button class="button">Pedir un experto</button></a>
+          <button class="button" @click="TalkForExpert(); PopupClose()">Pedir un experto</button>
       </div>
       </div>
   </div>
@@ -19,7 +19,7 @@
 </template>
 <script>
 export default ({
-  props:{ count:Array, problem:Object, PopupClose:Function}
+  props:{ problem:Object, PopupClose:Function, TalkForExpert: Function}
 })
 </script>
 
@@ -50,6 +50,7 @@ export default ({
     background: #04110D;
     padding: 20px;
     margin-bottom: 40px;
+    
 }
 .modal-background {
     background-color: #29b88da8;
@@ -59,7 +60,7 @@ export default ({
   width: 740px;
 }
 .button{
-  background: $primary-2;
+  background: linear-gradient(45deg, $primary, $color-combinate);
   font-weight: 600;
   padding:15px 35px ;
   border: none;

@@ -1,14 +1,14 @@
 <template>
-    <div class="return" v-if="count.length > 0">
+    <div class="return" v-if="$store.state.count.length > 0 && $store.state.fase!='Contact'">
         <div class="content" >
             <div class="back" @click="Return">
                 <font-awesome-icon class="iconback" icon="caret-left" />
             </div>
             <div class="section" >
-                <h3 class="subtitle is-5 capital">{{ count[0] }}</h3>
+                <h3 class="subtitle is-5 capital">{{ $store.state.count[0] }}</h3>
             </div>
-            <div class="icon-section" v-if="fase != [] && fase[0] !='service' ">
-                <font-awesome-icon icon="cog"/>
+            <div class="icon-section" v-if="$store.state.fase != [] && $store.state.fase[0] !='service' ">
+                <img :src="$store.state.fase[1]" alt="">
             </div>
         </div>
     </div>    
@@ -17,8 +17,9 @@
 
 
 export default({
-    props:{ count:Array, fase:Array, service:Object, Return: Function},
+    props:{ service:Object, Return: Function}
 })
+    
 </script>
 
 <style lang="scss" scoped>
@@ -26,8 +27,12 @@ export default({
 .back{
     background: $primary;
     border-radius: 50px 0px 0px 50px ;
-    width: 18%;
-    
+    width: 18%;    
+}
+.icon-section img{
+    width: 30px;
+    justify-content: start;
+    filter: invert(45%) sepia(53%) saturate(250%) hue-rotate(100deg) brightness(125%) contrast(138%);
 }
 .iconback{
     width: 100%;
@@ -52,7 +57,7 @@ h3{
             justify-content: center;
         }
         .section{
-            width: 62%;
+            width: 57%;
             justify-content: left;
         }
     }

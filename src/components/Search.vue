@@ -18,5 +18,5 @@ export default {
 
 <style lang="scss">
 @import '../assets/sass/main.scss';
-
+@import '../../node_modules/animate';
 </style>

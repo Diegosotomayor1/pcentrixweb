@@ -26,8 +26,8 @@
         <a href="" class="navbar-link">Cotizar</a>
         <div class="navbar-dropdown">
             <a href="" class="navbar-item is-flex"><font-awesome-icon class="icon" style="color:white;stroke: black;
-    stroke-width: 8%;" icon="cog"/><p class="item-text">Computadora</p></a>
-            <router-link to="/reparacion" class="navbar-item is-flex"><font-awesome-icon  class="icon" icon="desktop"/><p class="item-text">Reparación</p></router-link>
+              stroke-width: 8%;" icon="cog"/><p class="item-text">Computadora</p></a>
+            <a href="/reparacion" class="navbar-item is-flex"><font-awesome-icon  class="icon" icon="desktop"/><p class="item-text">Reparación</p></a>
         </div>
 
       </div>

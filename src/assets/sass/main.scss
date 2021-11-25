@@ -4,6 +4,29 @@ html{
     background-size: cover;
     min-height: 100vh;
 }
+
+body::before {
+  content: '';
+  background-image: url("/src/assets/img/Parafondos/Circulos-01.svg");
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  left: -125px;
+  top: 15%;
+  z-index: -1;
+
+}
+body::after{
+  content: '';
+  background: url("/src/assets/img/Parafondos/Circunferencia1-01.svg");
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -250px;
+  top: 40%;
+  z-index: -1;
+}
 //Variables
 $title-color: white;
 $primary: #29B88D;
@@ -36,13 +59,29 @@ footer{
   transition: position 0.5s;
   transition: display 0.5s;
   transition: opacity .5s;
+  transition-delay: .5s;
+
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transition-delay: 1s;
   position: absolute;
   opacity: 0; 
   transition: position 0.5s;
   transition: opacity .5s;
 }
+.fade_in-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+
+
+}
+.fade_in-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+  position: absolute;
+  opacity: 0; 
+  transition: position 0.5s;
+  transition: opacity .5s;
+}
+
 /**/
 .slide-enter-active, .slide-leave-active {
   animation: slide-out .33s
@@ -123,6 +162,7 @@ h1, h2 {
   a {
     color: $primary;
   }
+
   .columns{
       .is-flex{
         width: 100%;

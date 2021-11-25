@@ -13,6 +13,7 @@
                 @mouseout="startRotation"
                 class="image"
                 />
+            <br>
             <p>{{ description[currentNumber%5] }}</p>
         </div>
     </transition>
@@ -24,7 +25,7 @@
 export default({
 data() {
     return{       
-        images: ['https://pcentrix.pe/mvp/img/mantenimiento.svg', 'https://pcentrix.pe/mvp/img/repotenciamiento.svg', 'https://pcentrix.pe/mvp/img/reparar.svg'],
+        images: ['../src/assets/img/proceso/Nota 1-01.svg', '../src/assets/img/proceso/Nota 2-01.svg', '../src/assets/img/proceso/Nota 3.svg', '../src/assets/img/proceso/Nota 4-01.svg', '../src/assets/img/proceso/Nota 5-01.svg'],
         description:[
             'Nos mantenemos en contacto mediantecualquiera de nuestros canales y coordinamos tu caso', 
             'Uno de nuestros especialistas se acercará a tu domicilio para recoger tu equipo y llevarlo al taller',
@@ -79,9 +80,8 @@ computed: {
     }
 }
 .image{
-    padding: 50px;
-    margin: 10px;
-    background: white;
-    border-radius: 30px;
+    width: 300px;
+    height: 300px;
+    margin: auto;
 }
 </style>

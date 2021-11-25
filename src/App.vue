@@ -1,7 +1,9 @@
 <template>
   <div id="app">
       <p-header/>
+      <transition appear name="fade">
       <router-view/>
+      </transition>
       <p-footer/>
   </div>
 </template>
@@ -28,6 +30,7 @@ export default {
   text-align: left  ;
   color: white;
 }
+
 .columns{
   flex-flow: column;
   align-items: center;

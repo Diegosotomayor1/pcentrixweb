@@ -1,13 +1,15 @@
 <template>
     <div class="columns absolute-transition">
+    <transition appear enter-active-class="animate__animated animate__fadeIn animate__slow">
     <div class="flexify">
-    <div class="column is-one-third">
+    <div class="column is-one-third" style="align-items:start">
             <div class="content">
-                <back :service="service" :count="count" :fase="fase" :Return="Return"/>
-                <font-awesome-icon icon="cog" class="icon-flex" />
+                <transition appear enter-active-class="animate__animated animate__zoomInDown animate__slow ">
+                <img src="src\assets\img\iconos\Icono cambio de componente-01.svg" class="icon-flex" alt="">
+                </transition>
             </div>
         </div>
-        <div class="column">
+        <div class="column ">
             <div class="content">
                 <div class="intro_repair">
                     <h2 class="title">Diagnostiquemos tu pc</h2>
@@ -39,6 +41,7 @@
                                 <button class="despliegue" @click="tuto=!tuto"><font-awesome-icon class="circle-icon" icon="arrow-circle-down"/></button>  
                                 <transition name="slide">
                                     <div class="tuto" v-show="tuto == true">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Rr7Z_H1BnVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>    
                                 </transition>                  
                             </div>
@@ -59,8 +62,8 @@
                             <div>
                                 <p class="subtitle is-5">¿ Terminaste de colocar la información solicitada ?</p>
                                 <div class="is-grid buttons" style="width:600px">
-                                    <button class="button">Si terminé</button>
-                                    <button class="button">No sé que colocar</button>
+                                    <button class="button" @click="tuto=true; Model('fail')">Si terminé</button>
+                                    <button class="button" @click="tuto=false; Model('fail')">No sé que colocar</button>
                                 </div>
                             </div>
                         </div>
@@ -71,19 +74,11 @@
                         <div class="content">
                             <p class="subtitle is-6">Los precios varían segun el modelo de tu equipo</p>
                             <div class="grid-content fails">
-                                <div class="fail-item item-0">
-                                   <a class="overlay" @click="Guardar('pantalla')">
+                                <div class="fail-item item-0" v-for="component in components" v-bind:style="{ 'background-image' : 'url(' + component.image + ')'}">
+                                   <a class="overlay" @click="Guardar(component.title)">
                                        <div class="fail-item-title title-contain">
-                                        <h3 class="fail-item-title">Pantalla</h3>
-                                        <p>Costo entre: <b class="price">450 a 2000</b></p>
-                                        </div>
-                                   </a>
-                                </div>
-                                <div class="fail-item item-0">
-                                   <a class="overlay" @click="Guardar('bateria')">
-                                       <div class="fail-item-title title-contain">
-                                        <h3 class="fail-item-title">Pantalla</h3>
-                                        <p>Costo entre: <b class="price">450 a 2000</b></p>
+                                        <h3 class="fail-item-title">{{component.title}}</h3>
+                                        <p>Costo entre: <b class="price">{{component.price}}</b></p>
                                         </div>
                                    </a>
                                 </div>
@@ -96,11 +91,13 @@
                 <div>
                 </div>
                 </div>
-                <a href="./contacto"><button class="button submit"> Continuar </button></a>
+                <button class="button submit" :disabled="!end" @click="Contact()"> Continuar </button>
             </div>
         </div>
     </div>
+    </transition>
     </div>
+
 </template>
 <script>
 import Back from '../templates/back.vue'
@@ -109,6 +106,7 @@ export default ({
     components:{
         Back
     },
+    props:{ Contactform: Function },
     data(){
         return{
            modelo: "modelo",
@@ -121,9 +119,51 @@ export default ({
                ram:"",
                system:""               
            },
-           count:[],
            service:{ },
-           fase:[]
+           components:[
+               {
+                   title: "Fuente",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Fuente-01.png',
+               },
+               {
+                   title: "Monitor",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Monitor-01.png',
+               },
+               {
+                   title: "Mouse",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Mouse-01.png',
+               },
+               {
+                   title: "Placa madre",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Placa-madre-01.png',
+               },
+               {
+                   title: "Procesador",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Procesador-01.png',
+               },
+               {
+                   title: "RAM",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/RAM-01.png',
+               },
+               {
+                   title: "Tarjeta gráfica",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Tarjeta-gráfica-01.png',
+               },
+               {
+                   title: "Teclado",
+                   price: "150 a 2000",
+                   image: '../src/assets/img/reparacionpc/Teclado-01.png',
+               },
+
+           ],
+           end: false,
         }
     },
     methods:{
@@ -144,9 +184,18 @@ export default ({
             let searchComponent = this.componentes.indexOf(str);
             if(searchComponent == -1){ this.componentes.push(str) }
             else{ this.componentes.splice(searchComponent, 1) }
+            if(this.componentes.length >= 1){
+                this.end = true
+            }
+            if(this.componentes.length == 0){
+                this.end = false
+            }
         },
-        Return: function(){
-
+        Contact(){
+            this.$store.state.count.push([this.componentes, this.info_model, this.end]);
+            this.$store.state.count.push('Contact');
+            this.$store.state.backfase = this.$store.state.fase;
+            this.$store.state.fase = 'Contact'; 
         }
     },
     mounted: function(){
@@ -159,6 +208,7 @@ export default ({
                 else{
                     document.getElementsByClassName("overlay")[i].classList.add("focus-component")
                 }
+                
             });
             }
     }
@@ -167,6 +217,8 @@ export default ({
 
 <style lang="scss" scoped>
 @import '../../assets/sass/main.scss';
+@import '../../../node_modules/animate.css';
+
 .circle-icon{
     height: 2em;
     width: 2em;
@@ -181,10 +233,10 @@ export default ({
 }
 .icon-flex{
     width: 100% ;
-    height: 200px;
+    height: 250px;
     margin: 20px 0;
     padding: 10px;
-    color: $secundary ;
+    filter: invert(1);
     @media(max-width:768px){
         display: none;
     }
@@ -256,6 +308,7 @@ export default ({
         grid-template-columns: 1fr 1fr;
         div{
             @media(max-width:500px){
+                color: #000;
                 width: 280px !important;
                 .title.is-3{
                     font-size: 18px;
@@ -353,9 +406,8 @@ export default ({
     }
 }
 .item-0{
-    background-image: url(https://previews.123rf.com/images/weerapat/weerapat1505/weerapat150500119/57450932-personal-computer-burnt-due-to-electricity-short-circuit-threat-to-computer-hardware-concept.jpg);
     position: relative;
-    height: 200px;
+    height: 172px;
     margin:10px;
     background-size: cover;
     border-radius: 20px;
