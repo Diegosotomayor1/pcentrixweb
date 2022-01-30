@@ -81,7 +81,7 @@ export default ({
             },
             componente_dañado:
             {
-                title: "Componente dañado",
+                title: "Componente averiado",
                 description: "",
                 price: "",
                 img: "src/assets/img/iconos/Icono cambio de componente-01.svg"

@@ -36,6 +36,7 @@
 <script>
 
 export default({
+    components:{},
     props:{
         service: Object,
         rute: Function,

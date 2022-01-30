@@ -1,14 +1,14 @@
 <template>
-    <div class="return" v-if="$store.state.servicio.count.length > 0 && $store.state.servicio.fase!='Contact'">
+    <div class="return">
         <div class="content" >
-            <div class="back" @click="Return">
+            <div class="back">
                 <font-awesome-icon class="iconback" icon="caret-left" />
             </div>
             <div class="section" >
-                <h3 class="subtitle is-5 capital">{{ $store.state.servicio.count[0] }}</h3>
+                <h3 class="subtitle is-5 capital"></h3>
             </div>
-            <div class="icon-section" v-if="$store.state.servicio.fase != [] && $store.state.servicio.fase[0] !='service' ">
-                <img :src="$store.state.servicio.fase[1]" alt="">
+            <div class="icon-section" >
+                <img src="" alt="">
             </div>
         </div>
     </div>    
@@ -17,7 +17,6 @@
 
 
 export default({
-    props:{ service:Object, Return: Function}
 })
     
 </script>

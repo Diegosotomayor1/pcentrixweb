@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 html{
     background: linear-gradient(to bottom, rgb(57, 55, 55), rgb(10,10,10), rgb(4,4,4));
     background-repeat: repeat;
@@ -163,20 +164,7 @@ h1, h2 {
     color: $primary;
   }
 
-  .columns{
-      .is-flex{
-        width: 100%;
-        .column{
-          justify-content: space-between;
-        }
-        @media (max-width:768px){
-          .column{
-            justify-content: center;
-          }
-        }
-      }
-      width: 100%;
-  }
+
   .c-primary{
     color: $primary;
   }
@@ -184,29 +172,7 @@ h1, h2 {
     color: $secundary;
   }
 
-  @media (max-width:768px){
-      .icon-select{
-        width: 100px;
-      }
-      .card-content{
-        height: 260px !important;
-        width: 280px !important;
-        padding: 30px 40px !important;
-      }
-      .is-flex{
-        flex-direction: column;
-      }
-      #app::before{
-        top: -98% !important;
-          left: -55% !important;
-          width: 200vw !important;
-          height: 140vh !important;
-      }
-      .columns{
-        margin: 0 !important;
-      }
 
-  }
   input{
     padding: 10px 0;
     border: none;

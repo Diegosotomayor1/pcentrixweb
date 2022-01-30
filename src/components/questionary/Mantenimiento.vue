@@ -118,13 +118,13 @@ export default ({
             }
         },
         ContactMaintenance(plan, price){
-            this.$store.state.backfase = {
+            this.$store.state.servicio.backfase = {
                 fase: 'Mantenimiento',
-                count: this.$store.state.count,
+                count: this.$store.state.servicio.count,
                 plan,
                 price,
             };
-            this.$store.state.fase = 'Contact';
+            this.$store.state.servicio.fase = 'Contact';
         },
     },
 

@@ -80,7 +80,7 @@ export default ({
            reparado: undefined,
            components:[
                {
-                   title: "Batería",
+                   title: "Bateria",
                    price: "150 a 2000",
                    image: '../src/assets/img/reparacionlaptop/Batería-01.png',
                }, 
@@ -90,7 +90,7 @@ export default ({
                    image: '../src/assets/img/reparacionlaptop/Bisagras-01.png',
                }, 
                {
-                   title: "Cámara",
+                   title: "Camara",
                    price: "150 a 2000",
                    image: '../src/assets/img/reparacionlaptop/Cámara-01.png',
                }, 
@@ -105,7 +105,7 @@ export default ({
                    image: '../src/assets/img/reparacionlaptop/Conectores.png',
                },
                {
-                   title: "Micrófono",
+                   title: "Microfono",
                    price: "150 a 2000",
                    image: '../src/assets/img/reparacionlaptop/Micrófono-01.png',
                },
@@ -158,13 +158,17 @@ export default ({
             }
         },
         Guardar(str){
+            //Busca que componente se guarda o se elimina de components
             let searchComponent = this.componentes.indexOf(str);
             if(searchComponent == -1){ this.componentes.push(str) }
             else{ this.componentes.splice(searchComponent, 1) }
         },
         Contact(){
-        this.$store.state.count.push('Contact');
-        this.$store.state.fase = 'Contact'; 
+            //Guarda la informacion y cambia de componente de Vue a Contacto
+            this.$store.state.servicio.count.push([this.componentes, this.laptop_model, this.reparado]);
+            this.$store.state.servicio.count.push('Contact');
+            this.$store.state.servicio.backfase = this.$store.state.servicio.fase;
+            this.$store.state.servicio.fase = 'Contact'; 
         }
 
     },

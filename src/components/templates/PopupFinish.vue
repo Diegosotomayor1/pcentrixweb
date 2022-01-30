@@ -1,28 +1,24 @@
 <template>
-<div class="modal" id="modal">
+<div class="modal" id="modal" ref="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
       <div class="content">
         <div class="popup-info">
           <img class="icon_popup" src="src\assets\img\popup\Técnico-01.svg" alt="">
-          <h3 class="title is-3">¡Tu {{$store.state.servicio.count[0]}} necesita un experto!</h3>
-          <p class="subtitle is-5">{{ problem.description }}</p>
-          <span class="subtitle is-4">Costo: S/. {{problem.price}}</span>
+          <h3 class="title is-3">Nuestro experto va en camino</h3>
+          <p class="subtitle is-5">Tenemos la información necesaria para trabajar en tu caso. Te notificaremos apenas lleguemos a tu domicilio</p>
         </div>
       <div class="popup-buttons is-flex">
-          <button class="button" @click="TalkForExpert(); PopupClose()">Pedir un experto</button>
+          <a class="button" href="../">Entiendo</a>
       </div>
       </div>
   </div>
-  <button class="modal-close is-large" aria-label="close" @click="PopupClose()"></button>
+  <a class="modal-close is-large" aria-label="close" href="../"></a>
 </div>
 </template>
 <script>
-export default ({
-  props:{ problem:Object, PopupClose:Function, TalkForExpert: Function}
-})
-</script>
 
+</script>
 <style lang="scss" scoped>
 @import '../../assets/sass/main.scss';
 #modal{

@@ -74,7 +74,8 @@
                         <div class="content">
                             <p class="subtitle is-6">Los precios varían segun el modelo de tu equipo</p>
                             <div class="grid-content fails">
-                                <div class="fail-item item-0" v-for="component in components" v-bind:style="{ 'background-image' : 'url(' + component.image + ')'}">
+                                <div class="fail-item item-0" v-for="component in components" 
+                                    v-bind:style="{ 'background-image' : 'url(' + component.image + ')'}">
                                    <a class="overlay" @click="Guardar(component.title)">
                                        <div class="fail-item-title title-contain">
                                         <h3 class="fail-item-title">{{component.title}}</h3>
@@ -181,6 +182,7 @@ export default ({
             }
         },
         Guardar(str){
+            //Busca que componente se guarda o se elimina de components
             let searchComponent = this.componentes.indexOf(str);
             if(searchComponent == -1){ this.componentes.push(str) }
             else{ this.componentes.splice(searchComponent, 1) }
@@ -192,10 +194,11 @@ export default ({
             }
         },
         Contact(){
-            this.$store.state.count.push([this.componentes, this.info_model, this.end]);
-            this.$store.state.count.push('Contact');
-            this.$store.state.backfase = this.$store.state.fase;
-            this.$store.state.fase = 'Contact'; 
+            //Guarda la informacion y cambia de componente de Vue a Contacto
+            this.$store.state.servicio.count.push([this.componentes, this.info_model, this.end]);
+            this.$store.state.servicio.count.push('Contact');
+            this.$store.state.servicio.backfase.fase = this.$store.state.servicio.fase;
+            this.$store.state.servicio.fase = 'Contact'; 
         }
     },
     mounted: function(){

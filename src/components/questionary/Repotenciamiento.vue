@@ -22,21 +22,21 @@
                    <li ref="model" class="is-active model" @click="Model('modelo')"><a> 1. Información</a></li>
                         <transition name="slide">
                         <div class="tab-content modelo" v-show="showpass == 'modelo'">
-                            <p v-if="$store.state.count[0] == 'laptop'">Los repotenciamientos en laptops pueden variar dependiendo de la computadora que tengas <br> sea la marca, gama de producto y antiguedad.</p>
-                            <p v-if="$store.state.count[0] == 'laptop'">El precio podría variar desde los 180 soles </p>
-                            <p v-if="$store.state.count[0] == 'pc'">Los repotenciamientos en pcs pueden variar dependiendo de la computadora que tengas <br> sea la marca, gama de producto y antiguedad.</p>
-                            <p v-if="$store.state.count[0] == 'pc'">El precio podría variar desde los 140, 200 o 350 soles dependiendo de la tecnología<br> que use tu computadora</p>
+                            <p v-if="$store.state.servicio.count[0] == 'laptop'">Los repotenciamientos en laptops pueden variar dependiendo de la computadora que tengas <br> sea la marca, gama de producto y antiguedad.</p>
+                            <p v-if="$store.state.servicio.count[0] == 'laptop'">El precio podría variar desde los 180 soles </p>
+                            <p v-if="$store.state.servicio.count[0] == 'pc'">Los repotenciamientos en pcs pueden variar dependiendo de la computadora que tengas <br> sea la marca, gama de producto y antiguedad.</p>
+                            <p v-if="$store.state.servicio.count[0] == 'pc'">El precio podría variar desde los 140, 200 o 350 soles dependiendo de la tecnología<br> que use tu computadora</p>
 
                             <div class="buttons">
                                 <button class="button button-degrade" @click="Model('fail')">Estoy de acuerdo</button>
                             </div>
                         </div>
                         </transition>
-                    <li ref="fail" class= "fail" @click="Model('fail') " v-if="$store.state.count[0] == 'laptop'"><a>2. ¿Cuál es el modelo de tu laptop?</a></li>
-                    <li ref="fail" class= "fail" @click="Model('fail')" v-if="$store.state.count[0] == 'pc'"><a>2. Ingresa la información necesaria</a></li>
+                    <li ref="fail" class= "fail" @click="Model('fail') " v-if="$store.state.servicio.count[0] == 'laptop'"><a>2. ¿Cuál es el modelo de tu laptop?</a></li>
+                    <li ref="fail" class= "fail" @click="Model('fail')" v-if="$store.state.servicio.count[0] == 'pc'"><a>2. Ingresa la información necesaria</a></li>
                     <transition name="slide">
                     <div class="tab-content falla" v-show="showpass == 'fail'">
-                        <div class="columns" v-if="$store.state.count[0] == 'laptop'">
+                        <div class="columns" v-if="$store.state.servicio.count[0] == 'laptop'">
                             <div class="is-flex">
                                 <div class="content upgrade-model is-flex">
                                     <div class="model-image">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="columns" v-if="$store.state.count[0] == 'pc'">
+                        <div class="columns" v-if="$store.state.servicio.count[0] == 'pc'">
                             <div class="is-flex">
                                 <div class="content pc-upgrade">
                                     <div class="pc-info columns">
@@ -152,28 +152,26 @@ export default ({
         },
         Check(boolean){
             if(boolean){
-                this.$refs.yes.classList.add("active-button")
+                this.$refs.yes.classList.add("active-button");
                 this.$refs.no.classList.remove("active-button")
             }
             else{
-                this.$refs.yes.classList.remove("active-button")
+                this.$refs.yes.classList.remove("active-button");
                 this.$refs.no.classList.add("active-button")
             }
         },
         ContactUpgrade(){
             let valid=[];
-            if(this.$store.state.count[0]=='pc'){
+            if(this.$store.state.servicio.count[0]=='pc'){
                 for (let val in this.info_pc){
                     if(this.info_pc[val] == "" || this.info_pc[val] == undefined){
                             this.end = false;
                             valid.push(false) 
                     }
-                    else{
-                        valid.push(true)
-                    }
+                    else valid.push(true)
                 }
             }
-            if(this.$store.state.count[0]=='laptop'){
+            if(this.$store.state.servicio.count[0]=='laptop'){
                 for (let val in this.info_laptop){
                     if(this.info_laptop[val] == "" || this.info_laptop[val] == undefined){
                             this.end = false;
@@ -184,23 +182,22 @@ export default ({
                     }
                 }
             }
-            console.log(valid)
             if(valid.indexOf(false) == -1){   
-                    if(this.$store.state.count[0]=='pc'){
-                    this.$store.state.backfase = {
+                    if(this.$store.state.servicio.count[0]=='pc'){
+                    this.$store.state.servicio.backfase = {
                         fase: 'Repotenciamiento',
-                        count: this.$store.state.count,
+                        count: this.$store.state.servicio.count,
                         info: this.info_pc
                     }
                     }
-                    if(this.$store.state.count[0]=='laptop'){
-                        this.$store.state.backfase = {
+                    if(this.$store.state.servicio.count[0]=='laptop'){
+                        this.$store.state.servicio.backfase = {
                         fase: 'Repotenciamiento',
-                        count: this.$store.state.count,
+                        count: this.$store.state.servicio.count,
                         info: this.info_laptop
                     }
                     }
-                    this.$store.state.fase = 'Contact';
+                    this.$store.state.servicio.fase = 'Contact';
                 }
             else{
                 alert('Llena la información')

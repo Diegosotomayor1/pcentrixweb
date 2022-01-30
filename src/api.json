@@ -1,0 +1,150 @@
+{
+    "title" : "reparacion",
+    "opciones" : {
+        "componente averiado" : {
+            "title" : "Componente averiado",
+            "modelo" : {
+                "modelo" : "",
+                "reparado": ""
+            },
+            "info" : {
+                "procesador" : "",
+                "ram": "",
+                "system" : ""
+            },
+            "componentes-pc" : {
+                "fuente": {
+                    "title" : "fuente",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                },
+                "monitor": {
+                    "title" : "monitor",
+                    "precio" : "400 a 2000",
+                    "img" : ""
+                },
+                "Mouse": {
+                    "title" : "fuente",
+                    "precio" : "50 a 200",
+                    "img" : ""
+                },
+                "Placa madre":{
+                    "title" : "Placa madre",
+                    "precio" : "250 a 1000",
+                    "img" : ""
+                },
+                "procesador": {
+                    "title" : "Procesador",
+                    "precio" : "550 a 2500",
+                    "img" : ""
+                },
+                "RAM": {
+                    "title" : "fuente",
+                    "precio" : "150 a 800",
+                    "img" : ""
+                },
+                "Tarjeta de video" : {
+                    "title" : "Tarjeta de video",
+                    "precio": "600 a 3800",
+                    "img" : ""
+                },
+                "Teclado": {
+                    "title" : "Teclado",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                }
+            },
+            "componentes-laptop" : {
+                "bateria": {
+                    "title" : "batería",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                },
+                "bisagras": {
+                    "title" : "bisagras",
+                    "precio" : "400 a 2000",
+                    "img" : ""
+                },
+                "camara": {
+                    "title" : "cámara",
+                    "precio" : "50 a 200",
+                    "img" : ""
+                },
+                "carcasa":{
+                    "title" : "carcasa",
+                    "precio" : "250 a 1000",
+                    "img" : ""
+                },
+                "conectores": {
+                    "title" : "conectores",
+                    "precio" : "550 a 2500",
+                    "img" : ""
+                },
+                "microfono": {
+                    "title" : "micrófono",
+                    "precio" : "150 a 800",
+                    "img" : ""
+                },
+                "touchpad" : {
+                    "title" : "touchpad",
+                    "precio": "600 a 3800",
+                    "img" : ""
+                },
+                "pantalla": {
+                    "title" : "pantalla",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                },
+                "parlantes": {
+                    "title" : "parlantes",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                },
+                "puerto": {
+                    "title" : "puerto de carga",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                },
+                "teclado": {
+                    "title" : "teclado",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                },
+                "wifi": {
+                    "title" : "wifi",
+                    "precio" : "150 a 500",
+                    "img" : ""
+                }
+            }
+
+        },
+        "mantenimiento" : {
+            "info" : "Los mantenimientos preventivos ayudan a extender el tiempo de vida de tu equipo",
+            "paquetes-laptop" : {
+                "basico" : {
+                    "title" : "paquete básico",
+                    "caracteristicas" : [
+                        "Limpieza de carcasa",
+                        "Limpieza por separado de cada pieza",
+                        "Cambio de pasta térmica",
+                        "Documento informativo de <br>posibles mejoras a futuro para tu equipo"
+                    ],
+                    "precio" : 90
+                },
+                "completo" : {
+                    "title" : "paquete básico",
+                    "caracteristicas" : [
+                        "Limpieza de carcasa",
+                        "Limpieza por separado de cada pieza",
+                        "Cambio de pasta térmica",
+                        "Documento informativo de <br>posibles mejoras a futuro para tu equipo",
+                        "Formateo e instalación de programas <br> más programas a pedido"
+                    ],
+                    "precio" : 150
+                }
+
+            }
+        }
+    }
+}
+
