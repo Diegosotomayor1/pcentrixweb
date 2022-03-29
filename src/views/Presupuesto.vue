@@ -51,8 +51,8 @@ export default {
     data(){
         return{
             Alto:{ title: "Alto", precio: 6500 },
-            Medio: { title: "Medio", precio: 6500 },
-            Bajo: { title: "Bajo", precio: 6500 },
+            Medio: { title: "Medio", precio: 4500 },
+            Bajo: { title: "Bajo", precio: 2500 },
         }
     },
     computed:{
@@ -61,16 +61,20 @@ export default {
     },
     methods:{
         Addprice(eleccion){
-            this.$store.state.computadora.fase ++;
-            this.$store.state.computadora.eleccion.push(eleccion)
-            console.log(this.$store.state.computadora.eleccion)
+            this.$store.state.computadora.fase++;
+            this.$store.state.computadora.eleccion.push(eleccion);
+            console.log(this.$store.state.computadora.eleccion);
             this.$router.push(__dirname + 'computadora/programas');
-
-
         }
     },
     mounted(){
-        this.$store.commit('computadora/reset', 1)
+        console.log(this.$store.state.computadora.eleccion)
+        if( this.$store.state.computadora.eleccion.length == 0 || this.$store.state.computadora.eleccion.length > 2 ){
+            this.$router.push('./')
+        }
+        this.$store.commit('computadora/reset', 1);
+        this.$store.state.computadora.eleccion = [this.$store.state.computadora.eleccion[0]]
+
     }
 
 

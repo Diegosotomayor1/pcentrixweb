@@ -28,6 +28,15 @@ body::after{
   top: 40%;
   z-index: -1;
 }
+
+@media (max-width:768px){
+  body::before{
+    content: none;
+  }
+  body::after{
+    content: none;
+  }
+}
 //Variables
 $title-color: white;
 $primary: #29B88D;
@@ -189,4 +198,6 @@ h1, h2 {
     min-height: 70vh;
     flex-direction: column;
     justify-content: center;
-}
+  }
+
+  

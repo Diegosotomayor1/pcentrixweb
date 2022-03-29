@@ -50,13 +50,12 @@ export default {
         map( eleccion ){
             this.$store.dispatch('computadora/next')
             this.$store.state.computadora.eleccion.push(eleccion)
-            console.log(this.$store.state.computadora.eleccion)
-            this.$router.push(`computadora/presupuesto`)
+            this.$router.push(__dirname + 'computadora/presupuesto')
         }
     },
     mounted(){
         this.$store.commit('computadora/reset', 0)
-        
+        this.$store.state.computadora.eleccion = []
     }
 
 }
