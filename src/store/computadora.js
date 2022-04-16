@@ -524,7 +524,24 @@ export default{
         ],
         category_complements_select:{},
         complement_select:[],
-        popup_active: false
+        popup_active: false,
+        //plantilla de computadoras
+        computers: [
+          {
+            name: String,
+            description:String,
+            type: String,
+            price: Number,
+            rating:Number,
+            programs:[], 
+            image_carrousel_url:[],
+            especs:{
+              procesador:String,
+              ram:String,
+              storage:String,
+            },
+          }
+        ]
     },
     mutations:{
         aumentar(state){
