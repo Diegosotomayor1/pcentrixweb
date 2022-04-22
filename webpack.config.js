@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 module.exports = {
+  
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -85,9 +86,8 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map'  
 }
-
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
@@ -106,5 +106,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
+
   ])
 }
+
